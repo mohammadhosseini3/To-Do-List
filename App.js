@@ -1,19 +1,18 @@
-import { StyleSheet, Text, View } from 'react-native';
-import Task from './components/Task'
+import { StyleSheet, Text, View } from 'react-native'
+import Task from "./components/Task"
 
-const App = () => {
+export default function App() {
   return (
     <View style={styles.container}>
       {/* Today's Task  */}
       <View style={styles.taskWrapper}>
         <Text style={styles.sectionTitle}>Today's Tasks</Text>
         <View style={styles.items}>
-          <Task text="Task 1"/>
-          <Task text='Task2'/>
+          <Task/>
         </View>
       </View>
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -33,5 +32,3 @@ const styles = StyleSheet.create({
 
   }
 });
-
-export default App;
