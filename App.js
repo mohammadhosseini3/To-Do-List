@@ -17,6 +17,12 @@ export default function App() {
     setTask(null)
   }
 
+  const taskCompleted = (index) => {
+    const newArray = [...taskItems]
+    newArray.splice(index,1)
+    setTaskItems(newArray)
+  }
+
   return (
     <View style={styles.container}>
       {/* Today's Task  */}
@@ -24,11 +30,14 @@ export default function App() {
         <Text style={styles.sectionTitle}>Today's Tasks</Text>
         <View style={styles.items}>
           {
-            taskItems.map(item => {
-              return <Task text={item}/>
+            taskItems.map((item,index) => {
+              return (
+                <TouchableOpacity key={index} onPress={() => taskCompleted(index)}>
+                  <Task text={item}/>
+                </TouchableOpacity>
+              )
             })
           }
-          <Task text="Task 1"/>
         </View>
       </View>
 
