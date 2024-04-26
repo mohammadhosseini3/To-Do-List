@@ -8,10 +8,13 @@ export default function App() {
   const [task,setTask] = useState('')
   const [taskItems,setTaskItems] = useState([])
 
-  const handleAddTask = (task) => {
-    console.log(task)
-    // setTaskItems([...taskItems,task])
-    // setTask(null)
+  const handleTextInputChange = (text) => {
+    setTask(text)
+  }
+
+  const handleBtnPress = () => {
+    setTaskItems([...taskItems,task])
+    setTask(null)
   }
 
   return (
@@ -21,7 +24,7 @@ export default function App() {
         <Text style={styles.sectionTitle}>Today's Tasks</Text>
         <View style={styles.items}>
           {
-            taskItems.map((item) => {
+            taskItems.map(item => {
               return <Task text={item}/>
             })
           }
@@ -31,9 +34,14 @@ export default function App() {
 
       {/* Write a task */}
       <View style={styles.taskInput}>
-        <TextInput style={styles.textInput} placeholder='Write a task ...' onChangeText={text => setTask(text)} value={task}></TextInput>
+        <TextInput 
+          style={styles.textInput}
+          placeholder='Write a task ...'
+          onChangeText={handleTextInputChange}
+          value={task}>
+        </TextInput>
 
-        <TouchableOpacity onPress={() => handleAddTask()}>
+        <TouchableOpacity onPress={handleBtnPress}>
           <View style={styles.btnInput}>
             <Text>+</Text>
           </View>
